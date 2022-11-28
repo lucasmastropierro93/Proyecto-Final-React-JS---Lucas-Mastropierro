@@ -6,7 +6,7 @@ export const contextoGeneral = createContext();
 
 const ContextContainer = ({children}) => {
   
-    const [cartList, setCartList] = useState([]);
+    const [cartList, setCartList] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [totalAPagar, setTotalAPagar] = useState(0);
   
 
@@ -64,9 +64,11 @@ const totalProducts = () => {
 }
 
 useEffect(()=> {
-
+  localStorage.setItem("cart", JSON.stringify(cartList))
   setTotalAPagar(totalPrice)
     },[cartList]);
+
+   
 
   return (
     <contextoGeneral.Provider value={{

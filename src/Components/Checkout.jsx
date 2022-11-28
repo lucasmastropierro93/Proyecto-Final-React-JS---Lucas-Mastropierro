@@ -11,6 +11,11 @@ const Checkout = () => {
   const [tel, setTel] = useState("")
   const [email, setEmail] = useState("")
   const [orderId, setOrderId] = useState("")
+
+
+
+
+  
   function handleClickBuyButton(){
    
 
@@ -23,6 +28,8 @@ const Checkout = () => {
     
     const db = getFirestore();
     const pedidos = collection(db, 'pedidos');
+
+
     addDoc(pedidos, pedido).then(({id})=>{
       setOrderId(id)
       removeList();
