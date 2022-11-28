@@ -1,0 +1,9 @@
+.App-header {
+  display: flex;
+  position: static;
+  }
+  .App-main {
+  margin-top: 100px;
+  margin-left: 50px;
+  height: 800px;
+  }
