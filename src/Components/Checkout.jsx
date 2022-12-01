@@ -12,6 +12,7 @@ const Checkout = () => {
   const [email, setEmail] = useState("")
   const [orderId, setOrderId] = useState("")
   const [error, setError] = useState(false)
+
   const expresiones = {
     usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -20,19 +21,6 @@ const Checkout = () => {
     telefono: /^\d{7,14}$/ // 7 a 14 numeros.
   }
 
-const validacion = () => {
-  if(expresiones){
-    console.log("hola");
-    if(expresiones.test(nombre.campo)){
-
-      console.log("input correcto");
-    
-    }else{
-      console.log("input incorrecto");
-      
-    }
-  }
-}
   
   function handleClickBuyButton(e){
    
@@ -69,15 +57,20 @@ const validacion = () => {
         <h2>Completa el formulario con tus datos para confirmar la compra</h2>
         <form>
           <label>Nombre</label>
-        <Input expresiones={expresiones.nombre} type='text' placeholder='nombre' value={nombre.campo} onChange={(e)=> setNombre({...nombre, campo: e.target.value})} onKeyUp={validacion} onBlur={validacion} sx={{marginLeft:"10px"}}/>
-        <p>El nombre solo puede contener letras</p>
+        <Input type='text' placeholder='nombre' value={nombre.campo} onChange={(e)=> setNombre({...nombre, campo: e.target.value})} sx={{marginLeft:"10px"}}/>
+       
         </form>
-        <Input placeholder='tel'value={tel} onChange={(e)=> setTel(e.target.value)} sx={{marginLeft:"10px"}}/>
-
-        <Input placeholder='email' value={email} onChange={(e)=> setEmail(e.target.value)} sx={{marginLeft:"10px"}}/>
-
+        <form>
+        <label>Tel</label>
+        <Input type='tel' placeholder='tel'value={tel} onChange={(e)=> setTel(e.target.value)} sx={{marginLeft:"10px"}}/>
+        </form>
+        <form>
+        <label>Email</label>
+        <Input type='email' placeholder='email' value={email} onChange={(e)=> setEmail(e.target.value)} sx={{marginLeft:"10px"}}/>
+        </form>
+        <div>
         <Button onClick={handleClickBuyButton} variant="contained" style={{background:'#8E1F4C'}} sx={{marginLeft:"10px"}}>Comprar</Button>
-        
+        </div>
         </>
         )}
         </div>
